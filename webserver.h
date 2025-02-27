@@ -14,7 +14,7 @@
 #include <string>
 
 // #include "./threadpool/threadpool.h"
-// #include "./http/http_conn.h"
+#include "./http/http_conn.h"
 
 const int MAX_FD = 65536;           // 最大文件描述符
 const int MAX_EVENT_NUMBER = 10000; // 最大事件数
@@ -42,7 +42,7 @@ public:
 
     int m_pipefd[2];
     int m_epollfd;
-    // http_conn *users;
+    http_conn *users;
 
     // database
 

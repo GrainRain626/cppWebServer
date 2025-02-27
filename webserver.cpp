@@ -85,7 +85,7 @@ void WebServer::eventListen() {
 
     // 8. 将监听套接字添加到epoll中
     // utils.addfd(m_epollfd, m_listenfd, false, m_LISTENTrigmode);
-    // http_conn::m_epollfd = m_epollfd;
+    http_conn::m_epollfd = m_epollfd;
 
     // 9. 创建一对 UNIX 套接字（socketpair），并将其中一端加入 epoll
     ret = socketpair(PF_INET, SOCK_STREAM, 0, m_pipefd);
