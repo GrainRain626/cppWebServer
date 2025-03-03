@@ -13,7 +13,7 @@
 #include <cassert>
 #include <string>
 
-// #include "./threadpool/threadpool.h"
+#include "./threadpool/threadpool.h"
 #include "./http/http_conn.h"
 
 const int MAX_FD = 65536;           // 最大文件描述符

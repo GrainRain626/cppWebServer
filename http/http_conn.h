@@ -21,8 +21,8 @@
 #include <errno.h>
 #include <map>
 
-// #include "../lock/locker.h"
-// #include "../CGImysql/sql_connection_pool.h"
+#include "../lock/locker.h"
+#include "../CGImysql/sql_connection_pool.h"
 // #include "../timer/lst_timer.h"
 // #include "../log/log.h"
 
@@ -90,7 +90,7 @@ public:
 public:
     static int m_epollfd;
     static int m_user_count;
-    // MYSQL *mysql;
+    MYSQL *mysql;
     int m_state; // read为0, write为1
 
 private:
