@@ -45,7 +45,7 @@ m_actor_model(actor_model), m_thread_number(thread_number), m_max_requests(max_r
         throw std::exception();
     for(int i = 0; i < thread_number; i++) 
     {
-        if(thread_create(m_threads + i, NULL, worker, this) != 0)
+        if(pthread_create(m_threads + i, NULL, worker, this) != 0)
         {
             delete[] m_threads;
             throw std::exception();
@@ -111,7 +111,7 @@ void threadpool<T>::run()
     {
         m_queuestat.wait();               // 信号量等待
         m_queuelocker.lock();             // 工作线程被唤醒后先加互斥锁
-        if(m_workqueue.empty) 
+        if(m_workqueue.empty()) 
         {
             m_queuelocker.unlock();
             continue;
@@ -137,7 +137,7 @@ void threadpool<T>::run()
                 }
                 else
                 {
-                    request->improve = 1;
+                    request->improv = 1;
                     request->timer_flag = 1;
                 }
             }

@@ -8,8 +8,8 @@ else
 
 endif
 
-server: main.cpp webserver.cpp config.cpp ./http/http_conn.cpp
-	$(CXX) -o server $^ $(CXXFLAGS) -lmysqlclient
+server: main.cpp webserver.cpp config.cpp ./http/http_conn.cpp ./CGImysql/sql_connection_pool.cpp ./timer/lst_timer.cpp
+	$(CXX) -o server $^ $(CXXFLAGS) -lpthread -lmysqlclient
 
 clean:
 	rm -r server

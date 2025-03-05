@@ -22,10 +22,10 @@ int main(int argc, char* argv[])
     // server.log_write();
 
     // database
-    // server.sql_pool();
+    server.sql_pool();
 
     // threadpool
-    // server.thread_pool();
+    server.thread_pool();
 
     // 触发模式
     server.trig_mode();
@@ -34,7 +34,7 @@ int main(int argc, char* argv[])
     server.eventListen();
 
     // run
-    // server.eventLoop();
+    server.eventLoop();
 
     return 0;
 }

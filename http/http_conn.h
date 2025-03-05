@@ -23,7 +23,7 @@
 
 #include "../lock/locker.h"
 #include "../CGImysql/sql_connection_pool.h"
-// #include "../timer/lst_timer.h"
+#include "../timer/lst_timer.h"
 // #include "../log/log.h"
 
 
@@ -83,7 +83,7 @@ public:
     {
         return &m_address;
     }
-    void initmysql_result();
+    void initmysql_result(connection_pool *connPool);
     int timer_flag;
     int improv;
 

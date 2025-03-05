@@ -28,9 +28,19 @@ public:
     void init(int port, std::string user, std::string passwd, std::string databaseName,
               int log_write, int opt_linger, int trigmode, int sql_num,
               int thread_num, int close_log, int actor_model);
-
+    void thread_pool();
+    void sql_pool();
+    void log_write();
     void trig_mode();
     void eventListen();
+    void eventLoop();
+    void timer(int connfd, struct sockaddr_in client_address);
+    void adjust_timer(util_timer *timer);
+    void deal_timer(util_timer *timer, int sockfd);
+    bool dealclientdata();
+    bool dealwithsignal(bool &timeout, bool &stop_server);
+    void dealwithread(int sockfd);
+    void dealwithwrite(int sockfd);
 
 public:
     // 基础变量
@@ -45,8 +55,15 @@ public:
     http_conn *users;
 
     // database
+    connection_pool *m_connPool;
+    string m_user;
+    string m_passWord;
+    string m_databaseName;
+    int m_sql_num;
 
     // thread pool
+    threadpool<http_conn> *m_pool;
+    int m_thread_num;
 
     // epoll event
     epoll_event events[MAX_EVENT_NUMBER];
@@ -58,6 +75,7 @@ public:
     int m_CONNTrigmodel;
 
     // timer
-
+    client_data *users_timer;
+    Utils utils;
 };
 #endif

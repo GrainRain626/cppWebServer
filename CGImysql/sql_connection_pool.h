@@ -20,7 +20,7 @@ public:
     MYSQL *GetConnection();
     bool ReleaseConnection(MYSQL *conn);
     int GetFreeConn();
-    void Destroy();
+    void DestroyPool();
 
     // 单例模式
     static connection_pool *GetInstance();
